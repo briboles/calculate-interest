@@ -1,0 +1,14 @@
+{
+  "name": "calculate-interest",
+  "version": "1.0.0",
+  "description": "Javascript Functions to Calculate Compound Interest",
+  "main": "src/interest.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "author": "Brian Boles github.com/briboles",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

@@ -1,13 +1,6 @@
-const roundToDecimal = value => {
-  const temp = value * 100;
-  const round = Math.round(temp);
-  return round / 100;
-};
-
 // A = P(1 + rt)
 const simpleInterest = (principal, rate, time) => {
-  const amount = principal * (1 + rate * time);
-  return roundToDecimal(amount);
+  return principal * (1 + rate * time);
 };
 
 // A = P (1 + r/n) ^ (nt)
@@ -16,8 +9,7 @@ const simpleInterest = (principal, rate, time) => {
 // n: number of times interest is compounded per "t"
 // t: time
 const compoundInterest = (principal, rate, number, time) => {
-  const amount = principal * Math.pow((1 + rate/number), (number * time));
-  return roundToDecimal(amount);
+  return principal * Math.pow((1 + rate/number), (number * time));
 };
 
 // Future Value if Payment is applied at end of each series
@@ -25,7 +17,7 @@ const compoundInterest = (principal, rate, number, time) => {
 const compoundInterestWithPaymentAtEnd = (principal, rate, number, time, payment = 0) => {
   const amount = compoundInterest(principal, rate, number, time);
   const futureAmount = payment * ( ( Math.pow((1 + rate/number), (number * time) ) - 1 ) / (rate / number) );
-  return roundToDecimal(amount + futureAmount);
+  return amount + futureAmount;
 };
 
 // Funture Value if Payment is applied at start of each series
@@ -33,7 +25,7 @@ const compoundInterestWithPaymentAtEnd = (principal, rate, number, time, payment
 const compoundInterestWithPaymentAtStart = (principal, rate, number, time, payment = 0) => {
   const amount = compoundInterest(principal, rate, number, time);
   const futureAmount = payment * ( ( Math.pow( (1 + rate/number), (number * time) ) - 1) / (rate / number) ) * (1 + rate/number);
-  return roundToDecimal(amount + futureAmount);
+  return amount + futureAmount;
 };
 
 module.exports = {
